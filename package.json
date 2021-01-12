@@ -1,0 +1,17 @@
+{
+  "name": "v_remote4-tsl",
+  "version": "1.0.0",
+  "description": "Docker container to update the Multiview on a Lawo V_Remote4 to reflect TSL tally state of outputs.",
+  "main": "src/index.js",
+  "author": "Oliver Herrmann <oliver@monoxane.io>",
+  "license": "GPL-3.0",
+  "repository": "https://github.com/monoxane/v_remote4-tsl",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "dependencies": {
+    "lodash": "^4.17.20",
+    "node-emberplus": "^2.5.10",
+    "tsl-umd": "^1.1.2"
+  }
+}
