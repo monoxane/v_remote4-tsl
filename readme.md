@@ -8,7 +8,7 @@ This will also do the reverse at some point in the future and take an input sour
 
 0. Install Docker + docker-compose blah blah
 1. Copy `config.example.js` to `config.js`
-2. Update the V_Remote4 IP and TSL addresses in `pipmap`
+2. Update the V_Remote4 IP and TSL addresses in the config
 3. `docker-compose up -d`
 4. ??? 
 5. ~~Profit!~~ Production!
