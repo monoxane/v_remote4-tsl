@@ -10,5 +10,6 @@ This will also do the reverse at some point in the future and take an input sour
 1. Copy `config.example.js` to `config.js`
 2. Update the V_Remote4 IP and TSL addresses in the config
 3. `docker-compose up -d`
-4. ??? 
-5. ~~Profit!~~ Production!
+4. Send it TSL data via UDP on port 5001 (Tested with tslumd1.0 from a Carbonite)
+5. ??? 
+6. ~~Profit!~~ Production!
