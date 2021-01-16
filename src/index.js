@@ -210,6 +210,16 @@ umd.on('message', tally => {
   }
 })
 
+const handleUpdate = (index, update) => {
+  sourceID[index] = update.contents.value.split('sourceId=')[1]?.replace(/(\r\n|\n|\r)/gm, "")
+  if (config.tsl.enabled) {
+    processTSL()
+  }
+  if (config.rosstalk.enabled) {
+    processRossTalk()
+  }
+}
+
 const connectVremote = () => new Promise((resolve, reject) => {
   vremote.connect()
   .then(() => vremote.getDirectory())
@@ -225,12 +235,16 @@ const connectVremote = () => new Promise((resolve, reject) => {
   // Getting current source IDs
   .then(() => vremote.getElementByPath('1.15.1.1.1.4'))
   .then(node => sourceID[0] = node.contents.value.split('sourceId=')[1]?.replace(/(\r\n|\n|\r)/gm, ""))
+  .then(() => vremote.getElementByPath('1.15.1.1.1.4', update => { handleUpdate(0, update)}))
   .then(() => vremote.getElementByPath('1.15.1.1.2.4'))
   .then(node => sourceID[1] = node.contents.value.split('sourceId=')[1]?.replace(/(\r\n|\n|\r)/gm, ""))
+  .then(() => vremote.getElementByPath('1.15.1.1.2.4', update => { handleUpdate(1, update)}))
   .then(() => vremote.getElementByPath('1.15.1.1.3.4'))
   .then(node => sourceID[2] = node.contents.value.split('sourceId=')[1]?.replace(/(\r\n|\n|\r)/gm, ""))
+  .then(() => vremote.getElementByPath('1.15.1.1.3.4', update => { handleUpdate(2, update)}))
   .then(() => vremote.getElementByPath('1.15.1.1.4.4'))
   .then(node => sourceID[3] = node.contents.value.split('sourceId=')[1]?.replace(/(\r\n|\n|\r)/gm, ""))
+  .then(() => vremote.getElementByPath('1.15.1.1.4.4', update => { handleUpdate(3, update)}))
   .then(() => console.log(sourceID))
   .then(() => isConnectedToVRemote = true)
   .catch(reject)
